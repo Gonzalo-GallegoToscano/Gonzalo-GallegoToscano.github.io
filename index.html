@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gonzalo Gallego Toscano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#1a1d21;
+      --muted:#6b7280;
+      --accent:#0f766e;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --maxw:1040px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .layout{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:64px 28px;
+      display:flex;
+      gap:56px;
+      align-items:flex-start;
+    }
+
+    /* ---- LEFT: sidebar ---- */
+    .sidebar{
+      width:250px;
+      flex-shrink:0;
+      position:sticky;
+      top:64px;
+    }
+    .sidebar h1{
+      font-size:1.5rem;
+      font-weight:700;
+      letter-spacing:-.01em;
+      line-height:1.2;
+    }
+    .role{margin-top:8px;color:var(--muted);font-size:.95rem}
+    .sidebar ul{list-style:none;margin-top:20px;display:grid;gap:7px}
+    .sidebar li{font-size:.92rem;color:var(--muted)}
+
+    /* ---- RIGHT: main content ---- */
+    .main{flex:1;min-width:0;max-width:680px}
+    .main section{margin-bottom:44px}
+    .main h2{
+      font-size:1.05rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:18px;
+    }
+    .main p{margin-bottom:12px}
+    .placeholder{color:var(--muted);font-style:italic}
+
+    /* ---- mobile: stack the columns ---- */
+    @media(max-width:760px){
+      .layout{flex-direction:column;gap:36px;padding:44px 22px}
+      .sidebar{position:static;width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+
+    <!-- LEFT: profile -->
+    <aside class="sidebar">
+      <h1>Gonzalo Gallego Toscano</h1>
+      <p class="role">BSc Statistics, Economics &amp; Finance, UCL</p>
+      <ul>
+        <li>London, UK</li>
+        <li><a href="mailto:gonzalogt2005@gmail.com">Email</a></li>
+        <li><a href="https://github.com/Gonzalo-GallegoToscano" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/gonzalo-gallego-toscano/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </aside>
+
+    <!-- RIGHT: content sections -->
+    <main class="main">
+      <!-- SECTIONS START -->
+      <section>
+        <h2>About</h2>
+        <p class="placeholder">Your intro goes here — we'll write this together next.</p>
+      </section>
+      <!-- SECTIONS END -->
+    </main>
+
+  </div>
+</body>
+</html>
