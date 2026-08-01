@@ -65,6 +65,7 @@
     font-family:var(--serif);font-weight:500;font-size:1.42rem;letter-spacing:-.01em;
     padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:24px;
   }
+  .sec-note{font-size:.9rem;color:var(--muted);margin:-12px 0 20px;line-height:1.6}
   .prose p{font-size:1.05rem;color:var(--ink);margin-bottom:14px}
   .prose p:last-child{margin-bottom:0}
 
@@ -78,8 +79,28 @@
   .proj-title{font-family:var(--serif);font-weight:600;font-size:1.18rem;letter-spacing:-.01em;line-height:1.3}
   .proj-meta{font-size:.82rem;color:var(--faint);margin-top:5px;letter-spacing:.01em}
   .proj-desc{color:var(--muted);font-size:.97rem;margin-top:11px;line-height:1.62}
-  .proj-foot{margin-top:14px}
-  .proj-link{font-size:.9rem;font-weight:600;display:inline-block}
+  .proj-desc + .proj-desc{margin-top:9px}
+  .proj-foot{margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+  .tag{
+    display:inline-block;margin-left:9px;vertical-align:2px;
+    font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--accent-deep);
+    background:#EDF1F5;border:1px solid #D6E0E8;border-radius:999px;padding:2px 9px;
+  }
+
+  /* request access button */
+  .req{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--sans);font-size:.87rem;font-weight:600;
+    color:var(--accent-deep);background:#fff;
+    border:1px solid var(--line);border-radius:8px;
+    padding:8px 14px;cursor:pointer;
+    transition:border-color .18s ease,background .18s ease,color .18s ease;
+  }
+  .req:hover{border-color:var(--accent);background:#F4F7F9;color:var(--accent-deep);text-decoration:none}
+  .req svg{width:14px;height:14px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7}
+  .req-note{font-size:.82rem;color:var(--faint)}
 
   /* ---------- EXPERIENCE ---------- */
   .item{padding-top:24px;margin-top:24px;border-top:1px solid var(--line-soft)}
@@ -121,6 +142,7 @@
     .page{padding:0;max-width:none}
     .proj,.item{break-inside:avoid}
     a{color:var(--ink)}
+    .req{border-color:#ccc}
   }
 </style>
 </head>
@@ -143,7 +165,8 @@
     <div class="prose">
       <p>I recently completed a BSc in Statistics, Economics and Finance at UCL, and this year I am starting a MSc in Statistics, with a focus on Statistical Finance, at Imperial College London.</p>
       <p>My interests sit on the quantitative side of finance and the statistics that support it. I enjoy probability and statistical modelling, and the ways these ideas are used to understand markets, measure risk and reason under uncertainty. My degree brought together statistics and probability with economics and finance, which is the mix I want to keep building on.</p>
-      <p>Alongside my studies I've interned at Alantra (FIG M&A and credit), Cerberus Capital Management (real estate private equity) and urbanData Analytics (automated valuation models), working with credit, real estate and messy real-world financial data</p>Outside academics I co-founded X-Tend Prosthetics, a registered charity that delivers mechanical prosthetic arms to people in need in Morocco, and stay involved in student societies and sports.</p>
+      <p>Alongside my studies I've interned at Alantra (FIG M&amp;A and credit), Cerberus Capital Management (real estate private equity) and urbanData Analytics (automated valuation models), working with credit, real estate and messy real-world financial data.</p>
+      <p>Outside academics I co-founded X-Tend Prosthetics, a registered charity that delivers mechanical prosthetic arms to people in need in Morocco, and stay involved in student societies and sports.</p>
       <p>The projects below collect some of the applied and statistical work I have most enjoyed.</p>
     </div>
   </section>
@@ -151,34 +174,82 @@
   <!-- PROJECTS -->
   <section class="sec">
     <h2 class="sec-title">Projects</h2>
+    <p class="sec-note">Reports are not published here. If you would like to read the full write-up and code for any of the projects below, the button opens an email requesting access and I will send it over.</p>
     <div class="projects">
 
+      <!-- 1. SVI (in progress) -->
       <div class="proj">
-        <div class="proj-title">One week Value at Risk on the DAX and SPX</div>
-        <div class="proj-meta">2025/26 · R, ARMA and GARCH, copulas</div>
-        <p class="proj-desc">Estimated the one week Value at Risk of a DAX and SPX equity portfolio. Fitted ARMA and GARCH models to capture volatility clustering and conditional dynamics, applied the probability integral transform, and chose a copula to model the dependence between the two indices, then backtested the resulting estimates.</p>
-        <div class="proj-foot"><a class="proj-link" href="Assets/VaR_DAX_SPX.pdf" download>Download report (PDF)</a></div>
+        <div class="proj-title">Calibrating an arbitrage-free SVI volatility surface<span class="tag">In progress</span></div>
+        <div class="proj-meta">2026 · Python, optimisation, implied volatility, no-arbitrage constraints</div>
+        <p class="proj-desc">Building an implied volatility surface from listed option chains using the raw SVI parameterisation, fitting one five-parameter slice per maturity to market implied variances by non-linear least squares.</p>
+        <p class="proj-desc">The focus of the project is arbitrage: constraining each fitted slice so that the risk neutral density stays positive (no butterfly arbitrage) and so that total implied variance is non-decreasing in maturity (no calendar spread arbitrage), rather than simply fitting the quotes as closely as possible. Work in progress covers data cleaning of the chains, choice of initial values and parameter bounds, interpolation between maturities, and diagnostics comparing fitted against observed smiles.</p>
+        <div class="proj-foot">
+          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20Arbitrage-free%20SVI%20volatility%20surface&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20see%20the%20work%20on%20calibrating%20an%20arbitrage-free%20SVI%20volatility%20surface.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Request access
+          </a>
+          <span class="req-note">Draft available on request</span>
+        </div>
       </div>
 
+      <!-- 2. NBA Bayesian -->
       <div class="proj">
         <div class="proj-title">Predicting NBA field goals with Bayesian logistic regression</div>
         <div class="proj-meta">2025/26 · Python, R, Bayesian inference, MCMC</div>
-        <p class="proj-desc">Modelled whether an NBA shot is made, using Bayesian logistic regression. Implemented the estimation from scratch with a Metropolis Hastings sampler, chose priors, summarised the posterior through trace plots and summaries, and compared the model against a standard logistic regression using cross validation.</p>
-        <div class="proj-foot"><a class="proj-link" href="Assets/Bayesian_Logistic_MCMC_NBA.pdf" download>Download report (PDF)</a></div>
+        <p class="proj-desc">Modelled whether an NBA shot is made using Bayesian logistic regression, on the 2014/15 SportVU shot log of 128,069 attempts and 21 variables. Python was used for cleaning and exploratory analysis, R for the modelling.</p>
+        <p class="proj-desc">The posterior of the coefficient vector has no closed form, so estimation was implemented from scratch with a random walk Metropolis Hastings sampler: weakly informative priors, a tuned multivariate proposal, burn-in, and posterior summaries with credible intervals and trace plots. Covariates included shot distance, closest defender distance, shot clock, dribbles, shot type, location and shot number. Predictive accuracy was assessed by k-fold cross validation and benchmarked against a frequentist GLM, giving around 0.61 accuracy, with shot distance and defender proximity the dominant effects and a large irreducible random component in shot outcomes.</p>
+        <div class="proj-foot">
+          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20Bayesian%20logistic%20regression%20on%20NBA%20field%20goals&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20read%20the%20report%20on%20predicting%20NBA%20field%20goals%20with%20Bayesian%20logistic%20regression.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Request access
+          </a>
+          <span class="req-note">Full report and code on request</span>
+        </div>
       </div>
 
+      <!-- 3. VaR -->
+      <div class="proj">
+        <div class="proj-title">One week Value at Risk on the DAX and SPX</div>
+        <div class="proj-meta">2025/26 · R, ARMA and GARCH, copulas, Monte Carlo</div>
+        <p class="proj-desc">Estimated the one week 95% and 99% Value at Risk of an equally weighted, weekly rebalanced DAX and SPX portfolio, using weekly log returns from 2000 to 2025.</p>
+        <p class="proj-desc">Both series showed negative skew, excess kurtosis of roughly seven and clear volatility clustering, so each margin was fitted with an ARMA–GARCH model with skewed Student-t innovations, selected on information criteria and validated with Ljung–Box tests on standardised residuals and their squares. The standardised innovations were mapped to uniforms by the probability integral transform, uniformity was checked with Kolmogorov–Smirnov and Anderson–Darling tests, and a bivariate copula was selected by AIC across elliptical and Archimedean families; a survival BB1 copula was retained for its asymmetric tail dependence. VaR was then obtained from 50,000 Monte Carlo scenarios, compared against Gaussian, Student-t, Clayton, Gumbel, Frank and historical benchmarks, and backtested over 1,355 weeks with Kupiec and Christoffersen tests, both consistent with nominal coverage and independent exceedances.</p>
+        <div class="proj-foot">
+          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20One%20week%20VaR%20on%20the%20DAX%20and%20SPX&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20read%20the%20report%20on%20one%20week%20Value%20at%20Risk%20for%20the%20DAX%20and%20SPX.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Request access
+          </a>
+          <span class="req-note">Full report and code on request</span>
+        </div>
+      </div>
+
+      <!-- 4. EU Referendum -->
       <div class="proj">
         <div class="proj-title">Modelling the 2016 EU Referendum</div>
-        <div class="proj-meta">2024/25 · R, regression, clustering, PCA</div>
-        <p class="proj-desc">Built a regression model for the share of Leave votes across 1,070 UK wards using around 49 census covariates. Applied hierarchical clustering to group regions and principal component analysis to handle correlation among ethnicity variables, then explored interactions to reach a parsimonious final model.</p>
-        <div class="proj-foot"><a class="proj-link" href="Assets/EU_Referendum_Regression.pdf" download>Download report (PDF)</a></div>
+        <div class="proj-meta">2024/25 · R, generalised linear models, clustering, PCA</div>
+        <p class="proj-desc">Modelled the share of Leave votes across 1,070 UK wards using around 49 demographic, socioeconomic, procedural and geographic covariates drawn from the 2011 census, with 803 wards used for fitting and 267 held out for prediction.</p>
+        <p class="proj-desc">Regions were grouped by hierarchical clustering, which separated London from the rest of the country and reduced nine regions to four cluster groups usable as a covariate and in interactions. Because ethnicity shares sum to one hundred and are strongly correlated, principal components replaced the raw variables, with the first two components explaining 85% of the variance and contrasting White against minority majority wards and Black against Pakistani populations. Linearity in the logit was tested using Box–Tidwell, age bands and social grades were regrouped, and interactions such as education with ethnicity and tenure with the White share were explored to reach a parsimonious final model, assessed through deviance residual plots and QQ plots.</p>
+        <div class="proj-foot">
+          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20Modelling%20the%202016%20EU%20Referendum&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20read%20the%20report%20on%20modelling%20the%202016%20EU%20Referendum.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Request access
+          </a>
+          <span class="req-note">Full report and code on request</span>
+        </div>
       </div>
 
+      <!-- 5. Property prices -->
       <div class="proj">
         <div class="proj-title">Property price modelling</div>
         <div class="proj-meta">2024/25 · R, linear models, diagnostics</div>
-        <p class="proj-desc">Used linear and generalised linear models to study property prices across 500 records, working through exploratory analysis, model selection, residual diagnostics and interpretation.</p>
-        <div class="proj-foot"><a class="proj-link" href="Assets/Property_Price_Modelling.pdf" download>Download report (PDF)</a></div>
+        <p class="proj-desc">Built a normal linear model for the sale price of 500 properties, with covariates covering size (bedrooms, other rooms, total rooms, floor area), age, distance to the station, district and property type.</p>
+        <p class="proj-desc">Model building was driven by exploratory analysis rather than a purely algorithmic search: collinear room counts were replaced by a single total, district was treated as a factor, multicollinearity was checked with variance inflation factors, and candidate interactions such as age with district and area with district were compared. The final model was assessed with residual, leverage and QQ diagnostics, and interpreted in terms of price per square metre by district, the discount on flats and terraced houses relative to detached properties, and the varying effect of age across districts.</p>
+        <div class="proj-foot">
+          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20Property%20price%20modelling&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20read%20the%20report%20on%20property%20price%20modelling.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            Request access
+          </a>
+          <span class="req-note">Full report and code on request</span>
+        </div>
       </div>
 
     </div>
@@ -282,7 +353,7 @@
       </div>
       <div class="edu-detail">Double diploma, with grades of 17.66/20 and 12.98/14. Specialised in Mathematics, Further Mathematics, Physics, Chemistry and Economics.</div>
     </div>
-    
+
     <div class="item">
       <div class="item-head">
         <div>
