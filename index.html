@@ -179,7 +179,7 @@
 
       <!-- 1. SVI (in progress) -->
       <div class="proj">
-        <div class="proj-title">Calibrating an arbitrage-free SVI volatility surface<span class="tag">In progress</span></div>
+        <div class="proj-title">Calibrating an arbitrage-free SVI volatility surface</div>
         <div class="proj-meta">2026 · Python, optimisation, implied volatility, no-arbitrage constraints</div>
         <p class="proj-desc">Building an implied volatility surface from listed option chains using the raw SVI parameterisation, fitting one five-parameter slice per maturity to market implied variances by non-linear least squares.</p>
         <p class="proj-desc">The focus of the project is arbitrage: constraining each fitted slice so that the risk neutral density stays positive (no butterfly arbitrage) and so that total implied variance is non-decreasing in maturity (no calendar spread arbitrage), rather than simply fitting the quotes as closely as possible. Work in progress covers data cleaning of the chains, choice of initial values and parameter bounds, interpolation between maturities, and diagnostics comparing fitted against observed smiles.</p>
