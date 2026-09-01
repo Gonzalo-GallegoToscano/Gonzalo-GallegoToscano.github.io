@@ -178,20 +178,19 @@
     <div class="projects">
 
       <!-- 1. SVI (in progress) -->
-      <div class="proj">
-        <div class="proj-title">Calibrating an arbitrage-free SVI volatility surface</div>
-        <div class="proj-meta">2026 · Python, optimisation, implied volatility, no-arbitrage constraints</div>
-        <p class="proj-desc">Building an implied volatility surface from listed option chains using the raw SVI parameterisation, fitting one five-parameter slice per maturity to market implied variances by non-linear least squares.</p>
-        <p class="proj-desc">The focus of the project is arbitrage: constraining each fitted slice so that the risk neutral density stays positive (no butterfly arbitrage) and so that total implied variance is non-decreasing in maturity (no calendar spread arbitrage), rather than simply fitting the quotes as closely as possible. Work in progress covers data cleaning of the chains, choice of initial values and parameter bounds, interpolation between maturities, and diagnostics comparing fitted against observed smiles.</p>
-        <div class="proj-foot">
-          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20Arbitrage-free%20SVI%20volatility%20surface&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20see%20the%20work%20on%20calibrating%20an%20arbitrage-free%20SVI%20volatility%20surface.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
-            Request access
-          </a>
-          <span class="req-note">Draft available on request</span>
-        </div>
-      </div>
-
+     <div class="proj">
+  <div class="proj-title">An arbitrage-free SVI volatility surface for SPX options</div>
+  <div class="proj-meta">2026 · Python, numerical optimisation, implied volatility, no-arbitrage constraints</div>
+  <p class="proj-desc">An end-to-end pipeline from one raw CBOE option chain to an arbitrage-free implied volatility surface: cleaning and filtering 26,088 quotes, recovering forwards and discount factors from put-call parity, inverting Black-76 for 8,632 implied vols, and calibrating a five-parameter SVI smile to each of 48 maturities by constrained weighted least squares, to a median error of 28 vol basis points.</p>
+  <p class="proj-desc">The focus is arbitrage rather than fit quality alone. Each smile is checked for a non-negative implied density (no butterfly arbitrage) and adjacent maturities for non-decreasing total variance (no calendar arbitrage); the seven calendar violations found all sat at the edge of the quoted strike range, exactly where the SVI parameters stop being identified by the data, and were repaired at a recorded cost. The finished surface is then read as the market-implied probability distribution of the index via Breeden&ndash;Litzenberger. Code, figures, a full walkthrough notebook and the README with results are public.</p>
+  <div class="proj-foot">
+    <a class="req" href="https://github.com/Gonzalo-GallegoToscano/svi-volatility-surface" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 13v6H5V5h6"/></svg>
+      View on GitHub
+    </a>
+    <span class="req-note">Public repository</span>
+  </div>
+</div>
       <!-- 2. NBA Bayesian -->
       <div class="proj">
         <div class="proj-title">Predicting NBA field goals with Bayesian logistic regression</div>
@@ -314,7 +313,7 @@
           <div class="item-role">MSc Statistics (Statistical Finance)</div>
           <div class="item-org">Imperial College London</div>
         </div>
-        <div class="item-when">Starting 2026</div>
+        <div class="item-when">Starting September 2026</div>
       </div>
     </div>
 
@@ -371,7 +370,7 @@
     <h2 class="sec-title">Skills</h2>
     <div class="skills">
       <div class="sk-label">Programming</div>
-      <div class="sk-val">Python, R, SAS, LaTeX, Excel, PowerPoint.</div>
+      <div class="sk-val">Python, R, SQL, SAS, LaTeX, Excel, PowerPoint.</div>
       <div class="sk-label">Methods</div>
       <div class="sk-val">Probability, statistical inference, regression and generalised linear models, time series, stochastic methods in finance, principal component analysis, risk and Value at Risk.</div>
       <div class="sk-label">Languages</div>
