@@ -197,14 +197,14 @@
         <div class="proj-meta">2025/26 · Python, R, Bayesian inference, MCMC</div>
         <p class="proj-desc">Modelled whether an NBA shot is made using Bayesian logistic regression, on the 2014/15 SportVU shot log of 128,069 attempts and 21 variables. Python was used for cleaning and exploratory analysis, R for the modelling.</p>
         <p class="proj-desc">The posterior of the coefficient vector has no closed form, so estimation was implemented from scratch with a random walk Metropolis Hastings sampler: weakly informative priors, a tuned multivariate proposal, burn-in, and posterior summaries with credible intervals and trace plots. Covariates included shot distance, closest defender distance, shot clock, dribbles, shot type, location and shot number. Predictive accuracy was assessed by k-fold cross validation and benchmarked against a frequentist GLM, giving around 0.61 accuracy, with shot distance and defender proximity the dominant effects and a large irreducible random component in shot outcomes.</p>
-        <div class="proj-foot">
-          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20Bayesian%20logistic%20regression%20on%20NBA%20field%20goals&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20read%20the%20report%20on%20predicting%20NBA%20field%20goals%20with%20Bayesian%20logistic%20regression.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
-            Request access
-          </a>
-          <span class="req-note">Full report and code on request</span>
-        </div>
-      </div>
+         <div class="proj-foot">
+    <a class="req" href="https://github.com/Gonzalo-GallegoToscano/bayesian_logistic_regression_MCMC" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 13v6H5V5h6"/></svg>
+      View on GitHub
+      </a>
+      <span class="req-note">Public repository</span>
+    </div>
+  </div>
 
       <!-- 3. VaR -->
       <div class="proj">
@@ -213,13 +213,13 @@
         <p class="proj-desc">Estimated the one week 95% and 99% Value at Risk of an equally weighted, weekly rebalanced DAX and SPX portfolio, using weekly log returns from 2000 to 2025.</p>
         <p class="proj-desc">Both series showed negative skew, excess kurtosis of roughly seven and clear volatility clustering, so each margin was fitted with an ARMA–GARCH model with skewed Student-t innovations, selected on information criteria and validated with Ljung–Box tests on standardised residuals and their squares. The standardised innovations were mapped to uniforms by the probability integral transform, uniformity was checked with Kolmogorov–Smirnov and Anderson–Darling tests, and a bivariate copula was selected by AIC across elliptical and Archimedean families; a survival BB1 copula was retained for its asymmetric tail dependence. VaR was then obtained from 50,000 Monte Carlo scenarios, compared against Gaussian, Student-t, Clayton, Gumbel, Frank and historical benchmarks, and backtested over 1,355 weeks with Kupiec and Christoffersen tests, both consistent with nominal coverage and independent exceedances.</p>
         <div class="proj-foot">
-          <a class="req" href="mailto:gonzalogt2005@gmail.com?subject=Access%20request%3A%20One%20week%20VaR%20on%20the%20DAX%20and%20SPX&amp;body=Hi%20Gonzalo%2C%0A%0AI%20came%20across%20your%20site%20and%20would%20like%20to%20read%20the%20report%20on%20one%20week%20Value%20at%20Risk%20for%20the%20DAX%20and%20SPX.%0A%0AName%3A%0AOrganisation%3A%0AReason%20for%20the%20request%3A%0A%0AThank%20you%2C">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
-            Request access
-          </a>
-          <span class="req-note">Full report and code on request</span>
-        </div>
-      </div>
+        <a class="req" href="https://github.com/Gonzalo-GallegoToscano/1-week_VaR_estimation_ARMA-GARCH" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 13v6H5V5h6"/></svg>
+      View on GitHub
+      </a>
+      <span class="req-note">Public repository</span>
+    </div>
+  </div>
 
       <!-- 4. EU Referendum -->
       <div class="proj">
